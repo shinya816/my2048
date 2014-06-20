@@ -1,0 +1,77 @@
+/* CSS Document */
+
+header{
+	display:block;
+	margin:0 auto;
+	width:500;
+	text-align:center;
+}
+
+header h1{
+	font-family:Verdana;
+	font-size:40pt;
+	color:orange;
+}
+
+header #newGameButtom{
+	margin:20px auto;
+	width:100px;
+	
+	padding:10px 10px;
+
+	text-decoration:none;
+	border-radius:10px;
+	font-family:Verdana;
+	
+	background-color:orange;
+	color:#ffffff;
+	
+}
+
+header #newGameButtom:hover{
+	background-color:#FFCC99;
+}
+
+header p{
+	font-family:Verdana;
+	font-size:30px;
+	color:orange;
+}
+
+header p #score{
+	
+	border-bottom:1px dashed orange;
+	width:60px;
+	
+}
+
+#container{
+	width:500px;
+	height:500px;
+	padding:0px;
+	margin:50px auto;
+	border-radius:10px;
+	border:1px solid orange;
+	position:relative;
+}
+
+.cell{
+	width:100px;
+	height:100px;
+	border-radius:6px;
+	background-color:#FFCC99;
+	border:0px solid #FFCC99;
+	position:absolute;	
+}
+
+.cellNumber{
+	width:100px;
+	height:100px;
+	border-radius:6px;
+	position:absolute;	
+	font-family:Verdana;
+	text-align:center;
+	font-size:40px;
+	line-height:100px;
+}
+
