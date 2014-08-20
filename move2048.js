@@ -11,9 +11,12 @@ function moveLeft(){
 				for (var k = j - 1; k >= 0 ; k--){
 					if (k == 0){
 						if(board[i][k] == 0){
+							moveAnimation(i,j,i,k);
 							board[i][k] = board[i][j];
 							board[i][j] = 0;
 						}else if (board[i][k] == board[i][j] && flag[i][k]!=1){
+							
+							moveAnimation(i,j,i,k);
 							board[i][k] = board[i][k]*2;
 							
 							score = score + board[i][j]*2;
@@ -30,6 +33,8 @@ function moveLeft(){
 					}else{
 						if (board[i][k]!=0){
 							if (board[i][k] == board[i][j] && flag[i][k]!=1){
+								
+								moveAnimation(i,j,i,k);
 								board[i][k] = board[i][k]*2;
 								
 								score = score + board[i][j]*2;
@@ -38,6 +43,8 @@ function moveLeft(){
 								board[i][j] = 0;
 								flag[i][k] = 1;
 							}else if (k!=j-1){
+								
+								moveAnimation(i,j,i,k);
 								board[i][k+1] = board[i][j];
 								board[i][j] = 0;
 							}
@@ -52,6 +59,7 @@ function moveLeft(){
 		}
 		
 	setTimeout("updateBoardView()",200);
+	checkNum(2048);
 	return true;
 
 }
@@ -69,9 +77,13 @@ function moveUp(){
 				for (var k = i - 1; k >= 0 ; k--){
 					if (k == 0){
 						if(board[k][j] == 0){
+							
+							moveAnimation(i,j,k,j);
 							board[k][j] = board[i][j];
 							board[i][j] = 0;
 						}else if (board[k][j] == board[i][j] && flag[k][j]!=1){
+							
+							moveAnimation(i,j,k,j);
 							board[k][j] = board[k][j]*2;
 							
 							score = score + board[i][j]*2;
@@ -80,12 +92,16 @@ function moveUp(){
 							board[i][j] = 0;
 							flag[i][k] = 1;
 						}else if (k!=i-1){
-								board[k+1][j] = board[i][j];
-								board[i][j] = 0;
+							
+							moveAnimation(i,j,k,j);
+							board[k+1][j] = board[i][j];
+							board[i][j] = 0;
 						}
 					}else{
 						if (board[k][j]!=0){
 							if (board[k][j] == board[i][j] && flag[k][j]!=1){
+								
+								moveAnimation(i,j,k,j);
 								board[k][j] = board[k][j]*2;
 								
 								score = score + board[i][j]*2;
@@ -94,6 +110,8 @@ function moveUp(){
 								board[i][j] = 0;
 								flag[k][j] = 1;
 							}else if (k!=i-1){
+								
+								moveAnimation(i,j,k,j);
 								board[k+1][j] = board[i][j];
 								board[i][j] = 0;
 							}
@@ -108,6 +126,7 @@ function moveUp(){
 		}
 		
 	setTimeout("updateBoardView()",200);
+	checkNum(2048);
 	return true;
 }
 
@@ -126,9 +145,13 @@ function moveRight(){
 				for (var k = j + 1; k <=3; k++){
 					if (k == 3){
 						if(board[i][k] == 0){
+							moveAnimation(i,j,i,k);
 							board[i][k] = board[i][j];
 							board[i][j] = 0;
 						}else if (board[i][k] == board[i][j] && flag[i][k]!=1){
+							
+							moveAnimation(i,j,i,k);
+							
 							board[i][k] = board[i][k]*2;
 							
 							score = score + board[i][j]*2;
@@ -137,12 +160,16 @@ function moveRight(){
 							board[i][j] = 0;
 							flag[i][k] = 1;
 						}else if (k!=j+1){
-								board[i][k-1] = board[i][j];
-								board[i][j] = 0;
+							
+							moveAnimation(i,j,i,k);
+							board[i][k-1] = board[i][j];
+							board[i][j] = 0;
 						}
 					}else{
 						if (board[i][k]!=0){
 							if (board[i][k] == board[i][j] && flag[i][k]!=1){
+								
+								moveAnimation(i,j,i,k);
 								board[i][k] = board[i][k]*2;
 								
 								score = score + board[i][j]*2;
@@ -151,6 +178,8 @@ function moveRight(){
 								board[i][j] = 0;
 								flag[i][k] = 1;
 							}else if (k!=j+1){
+								
+								moveAnimation(i,j,i,k);
 								board[i][k-1] = board[i][j];
 								board[i][j] = 0;
 							}
@@ -165,6 +194,7 @@ function moveRight(){
 		}
 		
 	setTimeout("updateBoardView()",200);
+	checkNum(2048);
 	return true;
 }
 
@@ -182,9 +212,13 @@ function moveDown(){
 				for (var k = i + 1; k <=3; k++){
 					if (k == 3){
 						if(board[k][j] == 0){
+						
+							moveAnimation(i,j,k,j);
 							board[k][j] = board[i][j];
 							board[i][j] = 0;
 						}else if (board[k][j] == board[i][j] && flag[k][j]!=1){
+							
+							moveAnimation(i,j,k,j);
 							board[k][j] = board[k][j]*2;
 							
 							score = score + board[i][j]*2;
@@ -193,12 +227,16 @@ function moveDown(){
 							board[i][j] = 0;
 							flag[k][j] = 1;
 						}else if (k!=i+1){
-								board[k-1][j] = board[i][j];
-								board[i][j] = 0;
+							
+							moveAnimation(i,j,k,j);
+							board[k-1][j] = board[i][j];
+							board[i][j] = 0;
 						}
 					}else{
 						if (board[k][j]!=0){
 							if (board[k][j] == board[i][j] && flag[k][j]!=1){
+								
+								moveAnimation(i,j,k,j);
 								board[k][j] = board[k][j]*2;
 								
 								score = score + board[i][j]*2;
@@ -207,6 +245,8 @@ function moveDown(){
 								board[i][j] = 0;
 								flag[k][j] = 1;
 							}else if (k!=i+1){
+								
+								moveAnimation(i,j,k,j);
 								board[k-1][j] = board[i][j];
 								board[i][j] = 0;
 							}
@@ -221,6 +261,7 @@ function moveDown(){
 		}
 		
 	setTimeout("updateBoardView()",200);
+	checkNum(2048);
 	return true;
 }
 
