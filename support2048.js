@@ -1,16 +1,34 @@
 // JavaScript Document
 
-/**
-	初始化行和列，输入i为top，输入j为left
-**/
+
+//定义长宽，以便在移动端中自适应
+
+documentWidth = window.screen.availWidth;
+containerWidth = 0.92 * documentWidth;
+cellLength = 0.18 * documentWidth;
+cellSpace = 0.04 * documentWidth;
+
 function getPos(i){
-	return i*120+20;
+	//初始化行和列，输入i为top，输入j为left
+	//return i * 120 + 20;
+	return i * (cellSpace + cellLength) + cellSpace;
 }
 
+
 function getColor(num){
+	//设置cell的颜色
 	var color = new Array;
 	var bg = "";
 	var textcolor = "";
+	
+	if ((Math.log(num)/Math.log(2))%2==1){
+		bg = "orange";
+		textcolor="#ffffff";
+	}else{
+		bg = "#eee4da";
+		textcolor="orange";
+	}
+	/* 每个格子不同颜色
 	switch(num){
 		case 2: bg = "orange";
 				textcolor="#ffffff";
@@ -52,10 +70,20 @@ function getColor(num){
 				textcolor="#ffffff";
 				break;
 	}
+	*/
 	color[0] = bg;
 	color[1] = textcolor;
 	return color;
 	
+}
+
+function checkNum(num){
+	for (var i = 0; i < 4; i++)
+		for (var j = 0; j < 4; j++)
+			if (board[i][j]==num){
+				$("#gameWin").css('display','block');
+			}
+			
 }
 
 function noSpace(board){
@@ -68,17 +96,30 @@ function noSpace(board){
 }
 
 function showNum(i,j,num){
+	//数字产生动画
 	var cell = $('#cellNumber-'+i+j);
 	cell.css({'background-color':getColor(num)[0],
 				'color':getColor(num)[1]
 			});
 	cell.text(num);
-	cell.animate({'width':'100px',
-				'height':'100px',
+	cell.animate({'width':cellLength,
+				'height':cellLength,
+				'border-radius':0.1*cellLength,
 				'top':getPos(i),
 				'left':getPos(j)
 	},80);
 }
+
+function moveAnimation(fromx,fromy,tox,toy){
+	
+	var numCell = $('#cellNumber-' + fromx + fromy);
+	numCell.animate({
+        top:getPos( tox ),
+        left:getPos( toy )
+    },200);
+
+}
+
 
 function noMove(board){
 	if (canMoveUp( board ) || canMoveDown( board )
@@ -90,8 +131,16 @@ function noMove(board){
 }
 
 function isGameOver(){
+
 	if (noSpace(board) && noMove(board)){
-		alert("Game is Over!");
+	//if (score>15){ //测试用
+		$("#gameOver").css('display','block');
+
 	}
+
+}
+
+function continuePlay(){
+	$("#gameWin").remove();
 
 }
